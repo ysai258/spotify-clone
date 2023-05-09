@@ -1,0 +1,17 @@
+query GetPlaylists {
+  getPlaylists {
+    id
+    title
+  }
+}
+
+query GetSongs($playlistId: Int!, $search: String) {
+  getSongs(playlistId: $playlistId, search: $search) {
+    _id
+    artist
+    duration
+    photo
+    title
+    url
+  }
+}
