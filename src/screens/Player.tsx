@@ -32,13 +32,13 @@ const Player: FC<PlayerProps> = ({ song, onNext, onPrev }) => {
           </div>
           <img
             src={song.photo}
-            style={{ height: "65dvh", width: "35dvw", marginTop: 32 }}
+            style={{ height: "65dvh", width: "100%", marginTop: 32 }}
             alt={song.title}
           />
           <AudioPlayer
             autoPlay={true}
             style={{
-              width: "35dvw",
+              width: "100%",
               backgroundColor: "inherit",
               boxShadow: "none",
             }}

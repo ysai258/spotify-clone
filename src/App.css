@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+.songs-container{
+  height: calc(100vh - 30vh);
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #222121;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: #d4d9e2;
+}
+
+.player{
+  position: relative;
+}
+
+.player-search{
+  display: none;
+  position: absolute;
+  top:40px;
+  right:20px;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiDrawer-paper{
+  background-color: #141414 !important;
+  color: white !important;
+}
+
+@media only screen and (max-width: 830px) {
+  .tabs{
+    display: none;
+  }
+  .songs-container{
+    height: calc(100vh - 23vh);
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .songs{
+    display: none;
+  }
+  .player-search{
+    display: block;
+  }
+}

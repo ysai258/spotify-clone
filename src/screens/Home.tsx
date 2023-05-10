@@ -3,10 +3,12 @@ import Tabs from "./Tabs";
 import Player from "./Player";
 import { useEffect, useState } from "react";
 import { Playlist, Song } from "../generated";
+import Drawer from "@mui/material/Drawer";
 
 const Home = () => {
   const [playlist, setPlaylist] = useState<Playlist>();
   const [song, setSong] = useState<Song>();
+  const [open, setOpen] = useState(window.innerWidth > 425 ? false : song ? false : true);
 
   const [avgColor, setAvgColor] = useState("rgba(0,0,0,1)");
   useEffect(() => {
@@ -84,13 +86,12 @@ const Home = () => {
         minHeight: "100dvh",
         backgroundColor: "red",
         ...bgStyle,
-        padding: 16,
       }}
     >
-      <div style={{ flex: 0.5 }}>
+      <div style={{ flex: 0.5, padding: 15 }} className="tabs">
         <Tabs setPlaylist={setPlaylist} />
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, padding: 15 }} className="songs">
         <Songs
           playlist={playlist}
           setSong={setSong}
@@ -98,9 +99,28 @@ const Home = () => {
           prevSong={prevSong}
         />
       </div>
-      <div style={{ flex: 2 }}>
+      <div style={{ flex: 2, padding: 15 }} className="player">
         <Player song={song} onNext={onNext} onPrev={onPrev} />
+        <div className="player-search" onClick={()=>setOpen(true)}>
+          <img
+            style={{ marginRight: 10, height: 25, width: 25 }}
+            src={require("../assets/search_icon.png")}
+          />
+        </div>
       </div>
+      <Drawer anchor={"left"} open={open} onClose={()=>setOpen(false)}>
+        <div style={{ flex: 1, padding: 15 }}>
+          <Songs
+            playlist={playlist}
+            setSong={(e)=>{
+              setSong(e);
+              setOpen(false)
+            }}
+            nextSong={nextSong}
+            prevSong={prevSong}
+          />
+        </div>
+      </Drawer>
     </div>
   );
 };

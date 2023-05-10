@@ -116,7 +116,7 @@ const Songs: FC<Songsprops> = ({ playlist, setSong, nextSong, prevSong }) => {
             No songs found
           </div>
         ) : (
-          <div>
+          <div className="songs-container">
             {songs?.getSongs.map((song) => {
               return (
                 <div
